@@ -1,0 +1,53 @@
+[    1121ms] [INFO] You like to look under the hood? Why not help us build the engine? https://soundcloud.com/jobs @ https://a-v2.sndcdn.com/assets/55-95844e4a.js:32
+[    2483ms] [LOG] prebid-load.js loaded successfully. @ https://a-v2.sndcdn.com/assets/55-95844e4a.js:99
+[    3807ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[    3807ms] [WARNING] Error with Feature-Policy header: Unrecognized feature: 'ambient-light-sensor'. @ :0
+[    3807ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[    3807ms] [WARNING] Error with Feature-Policy header: Unrecognized feature: 'battery'. @ :0
+[    3807ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[    3807ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[    3807ms] [WARNING] Error with Feature-Policy header: Unrecognized feature: 'document-domain'. @ :0
+[    3807ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[    3807ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[    3807ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[    3807ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[    3807ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[    3807ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[    3807ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[    3807ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[    3807ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[    3807ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[    3807ms] [WARNING] Error with Feature-Policy header: Unrecognized feature: 'wake-lock'. @ :0
+[    4090ms] [LOG] %craven%c Raven v1.23.3-j3625z background-color:#000;margin-left:1px;padding:1px 3px;font-size:0.75em;color:#ffffff; font-size:0.9em; @ https://a-v2.sndcdn.com/assets/55-95844e4a.js:99
+[    5490ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://cadmus.script.ac/d24657ks8lvxjy/script.js:0
+[    5621ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://d2g5n8b622dsn7.cloudfront.net/config/soundcloud:users:1734339167:0
+[    6153ms] [WARNING] [GPT] PubAdsService.disableInitialLoad is deprecated, use googletag.setConfig({disableInitialLoad: ...}) instead.
+https://goo.gle/gpt-message#170 @ https://a-v2.sndcdn.com/assets/55-95844e4a.js:99
+[    7158ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://api-auth.soundcloud.com/oauth/authorize?client_id=Pb72ranhoyt6gw7hM7TkzUItXlMWSNSo:0
+[    7375ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://synchroscript.deliveryengine.adswizz.com/www/delivery/afr.php?zoneid=9&aw_0_req.gdpr=false:0
+[   15048ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[   15048ms] [WARNING] Error with Feature-Policy header: Unrecognized feature: 'ambient-light-sensor'. @ :0
+[   15048ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[   15048ms] [WARNING] Error with Feature-Policy header: Unrecognized feature: 'battery'. @ :0
+[   15048ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[   15048ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[   15048ms] [WARNING] Error with Feature-Policy header: Unrecognized feature: 'document-domain'. @ :0
+[   15048ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[   15048ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[   15048ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[   15048ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[   15048ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[   15048ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[   15048ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[   15048ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[   15048ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[   15048ms] [WARNING] Error with Feature-Policy header: Unrecognized origin: 'none'. @ :0
+[   15048ms] [WARNING] Error with Feature-Policy header: Unrecognized feature: 'wake-lock'. @ :0
+[   16828ms] [WARNING] [GSI_LOGGER]: Message ignored due to invalid source. @ https://a-v2.sndcdn.com/assets/55-95844e4a.js:99
+[   16836ms] [WARNING] [GSI_LOGGER]: Your client application may not display Google One Tap when FedCM becomes mandatory. Opt-in to FedCM to test that you have the proper cross-origin permission policy set up. Ignore this message if One Tap is displayed after opt-in to FedCM. Learn more: (https://developers.google.com/identity/gsi/web/guides/fedcm-migration?s=dc#cross_origin) @ https://accounts.google.com/gsi/intermediatesupport:86
+[   16838ms] [WARNING] [GSI_LOGGER]: Your client application uses one of the Google One Tap prompt UI status methods that may stop functioning when FedCM becomes mandatory. Refer to the migration guide to update your code accordingly and opt-in to FedCM to test your changes. Learn more: https://developers.google.com/identity/gsi/web/guides/fedcm-migration?s=dc#display_moment and https://developers.google.com/identity/gsi/web/guides/fedcm-migration?s=dc#skipped_moment @ https://accounts.google.com/gsi/intermediatesupport:86
+[   16840ms] [WARNING] [GSI_LOGGER]: Message ignored due to invalid source. @ https://a-v2.sndcdn.com/assets/55-95844e4a.js:99
+[   16841ms] [WARNING] [GSI_LOGGER]: Message ignored due to invalid source. @ https://a-v2.sndcdn.com/assets/55-95844e4a.js:99
+[   16846ms] [ERROR] Not signed in with the identity provider. @ https://secure.soundcloud.com/one-tap?client_id=Pb72ranhoyt6gw7hM7TkzUItXlMWSNSo&device_id=551812-697207-852220-948965&theme=dark&ui_evo=true&embedded_in_iframe=true&app_id=46941&tracking=local&redirect_uri=https%3A%2F%2Fsoundcloud.com%2Fsignin%2Fcallback&state=eyJjbGllbnRfaWQiOiJQYjcycmFuaG95dDZndzdoTTdUa3pVSXRYbE1XU05TbyIsIm5vbmNlIjoiSjF%2BZ1RXLVBYTjVyUHFOampfQkE2UmY3VEJjVFcwTDRGUHJsNDlKR05SbGtmfndLNmRmeG1ESjd5WWMtMHpoNCJ9&code_challenge=DWZVtyD4bU8OoySkv_NuXQvMfFew_N861w992m0Sy2w&code_challenge_method=S256#start_url=https%3A%2F%2Fsoundcloud.com%2Fdeleted-947955106&start_view=sign_in&is_visible=false:0
+[   16911ms] [ERROR] [GSI_LOGGER]: FedCM get() rejects with NetworkError: Error retrieving a token. @ https://accounts.google.com/gsi/intermediatesupport:87
+[   16913ms] [WARNING] [GSI_LOGGER]: Message ignored due to invalid source. @ https://a-v2.sndcdn.com/assets/55-95844e4a.js:99

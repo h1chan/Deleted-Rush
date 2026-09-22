@@ -1,0 +1,226 @@
+- main [ref=f4e3]:
+  - navigation [ref=f4e6]:
+    - link "DELETEDROOT" [ref=f4e7] [cursor=pointer]:
+      - /url: "#top"
+    - generic [ref=f4e8]:
+      - link "BEATS" [ref=f4e9] [cursor=pointer]:
+        - /url: "#beats"
+      - link "PRICES" [ref=f4e10] [cursor=pointer]:
+        - /url: "#prices"
+      - link "ABOUT" [ref=f4e11] [cursor=pointer]:
+        - /url: "#about"
+      - link "CONTACT" [ref=f4e12] [cursor=pointer]:
+        - /url: "#contact"
+    - button "RU" [ref=f4e13] [cursor=pointer]
+  - generic [ref=f4e14]:
+    - generic: 51°10'N · 71°26'E — 07:35:30 — LOCAL SIGNAL
+    - generic: 笛のように響く、壊れた信号
+    - generic:
+      - generic:
+        - img "DELETEDROOT cover"
+        - generic:
+          - generic: CD-R / LOST MEDIA
+          - generic: TRK.05
+      - generic: FIG.01 — DELETEDROOT
+    - generic [ref=f4e16]: PRODUCER // SIGNAL 001
+    - generic [ref=f4e17]:
+      - heading "DELETEDROOT, DELETED ROOT, DELETEDROOT," [level=1] [ref=f4e18]
+      - generic [ref=f4e19]:
+        - generic [ref=f4e20]: pinknoise — ambient — hyperpop
+        - generic [ref=f4e21]: based in KAZAKHSTAN // worldwide signal
+      - paragraph [ref=f4e22]: 私は消えた。でも音はまだここに残っている。
+    - generic [ref=f4e23]:
+      - generic [ref=f4e24]: when i log off, the static remembers my name.
+      - link "LATEST TRANSMISSION ▸" [ref=f4e25] [cursor=pointer]:
+        - /url: "#beats"
+        - text: LATEST TRANSMISSION
+        - generic [ref=f4e26]: ▸
+    - generic [ref=f4e27]: SCROLL // DESCEND ↓
+  - generic [ref=f4e29]:
+    - generic [ref=f4e30]: DELETEDROOT
+    - generic [ref=f4e33]: PINKNOISE
+    - generic [ref=f4e36]: AMBIENT
+    - generic [ref=f4e39]: HYPERPOP
+    - generic [ref=f4e42]: MP3 $10
+    - generic [ref=f4e45]: WAV $30
+    - generic [ref=f4e48]: EXCLUSIVE $100
+    - generic [ref=f4e51]: KAZAKHSTAN
+    - generic [ref=f4e54]: DELETEDROOT
+    - generic [ref=f4e57]: PINKNOISE
+    - generic [ref=f4e60]: AMBIENT
+    - generic [ref=f4e63]: HYPERPOP
+    - generic [ref=f4e66]: MP3 $10
+    - generic [ref=f4e69]: WAV $30
+    - generic [ref=f4e72]: EXCLUSIVE $100
+    - generic [ref=f4e75]: KAZAKHSTAN
+    - generic [ref=f4e78]: DELETEDROOT
+    - generic [ref=f4e81]: PINKNOISE
+    - generic [ref=f4e84]: AMBIENT
+    - generic [ref=f4e87]: HYPERPOP
+    - generic [ref=f4e90]: MP3 $10
+    - generic [ref=f4e93]: WAV $30
+    - generic [ref=f4e96]: EXCLUSIVE $100
+    - generic [ref=f4e99]: KAZAKHSTAN
+    - generic [ref=f4e102]: DELETEDROOT
+    - generic [ref=f4e105]: PINKNOISE
+    - generic [ref=f4e108]: AMBIENT
+    - generic [ref=f4e111]: HYPERPOP
+    - generic [ref=f4e114]: MP3 $10
+    - generic [ref=f4e117]: WAV $30
+    - generic [ref=f4e120]: EXCLUSIVE $100
+    - generic [ref=f4e123]: KAZAKHSTAN
+  - generic [ref=f4e126]:
+    - generic [ref=f4e127]: // select transmission to preview
+    - heading "BEAT_ARCHIVE BEAT_ARCHIVE BEAT_ARCHIVE" [level=2] [ref=f4e128]
+    - generic [ref=f4e129]:
+      - button "01 ▸ DELPHINE 154 BPM $10/$30/$100" [ref=f4e130] [cursor=pointer]:
+        - generic [ref=f4e131]: "01"
+        - generic [ref=f4e132]: ▸
+        - generic [ref=f4e133]: DELPHINE
+        - generic [ref=f4e135]: 154 BPM
+        - generic [ref=f4e136]: $10/$30/$100
+      - button "02 ▸ DO-YOU-SEE-ME+ 9ANYAL 140 BPM $10/$30/$100" [ref=f4e137] [cursor=pointer]:
+        - generic [ref=f4e138]: "02"
+        - generic [ref=f4e139]: ▸
+        - generic [ref=f4e141]:
+          - text: DO-YOU-SEE-ME
+          - generic [ref=f4e142]: + 9ANYAL
+        - generic [ref=f4e143]: 140 BPM
+        - generic [ref=f4e144]: $10/$30/$100
+      - button "03 ▸ FUNERAL 145 BPM $10/$30/$100" [ref=f4e145] [cursor=pointer]:
+        - generic [ref=f4e146]: "03"
+        - generic [ref=f4e147]: ▸
+        - generic [ref=f4e148]: FUNERAL
+        - generic [ref=f4e150]: 145 BPM
+        - generic [ref=f4e151]: $10/$30/$100
+      - button "04 ▸ TOKYO+ FRQXENCY 130 BPM $10/$30/$100" [ref=f4e152] [cursor=pointer]:
+        - generic [ref=f4e153]: "04"
+        - generic [ref=f4e154]: ▸
+        - generic [ref=f4e156]:
+          - text: TOKYO
+          - generic [ref=f4e157]: + FRQXENCY
+        - generic [ref=f4e158]: 130 BPM
+        - generic [ref=f4e159]: $10/$30/$100
+      - button "05 ▸ WISH-FOR-EVER+ ALX 129 BPM $10/$30/$100" [ref=f4e160] [cursor=pointer]:
+        - generic [ref=f4e161]: "05"
+        - generic [ref=f4e162]: ▸
+        - generic [ref=f4e164]:
+          - text: WISH-FOR-EVER
+          - generic [ref=f4e165]: + ALX
+        - generic [ref=f4e166]: 129 BPM
+        - generic [ref=f4e167]: $10/$30/$100
+  - generic [ref=f4e169]:
+    - generic [ref=f4e170]: 消えた信号
+    - generic [ref=f4e173]: ルートを探して
+    - generic [ref=f4e176]: 音は残る
+    - generic [ref=f4e179]: ネオンの下の雪
+    - generic [ref=f4e182]: 消えた信号
+    - generic [ref=f4e185]: ルートを探して
+    - generic [ref=f4e188]: 音は残る
+    - generic [ref=f4e191]: ネオンの下の雪
+    - generic [ref=f4e194]: 消えた信号
+    - generic [ref=f4e197]: ルートを探して
+    - generic [ref=f4e200]: 音は残る
+    - generic [ref=f4e203]: ネオンの下の雪
+    - generic [ref=f4e206]: 消えた信号
+    - generic [ref=f4e209]: ルートを探して
+    - generic [ref=f4e212]: 音は残る
+    - generic [ref=f4e215]: ネオンの下の雪
+  - generic [ref=f4e218]:
+    - generic [ref=f4e219]: // choose your signal depth
+    - heading "LICENSE_TERMINALS LICENSE_TERMINALS LICENSE_TERMINALS" [level=2] [ref=f4e220]
+    - generic [ref=f4e221]:
+      - generic [ref=f4e222]:
+        - generic [ref=f4e223]:
+          - generic [ref=f4e224]: LIC/MP3
+          - generic [ref=f4e225]: 1/3
+        - heading "MP3" [level=3] [ref=f4e226]
+        - generic [ref=f4e227]: $10
+        - paragraph [ref=f4e228]: Tagged MP3 for demos, freestyles, previews.
+        - link "ORDER VIA DM →" [ref=f4e229] [cursor=pointer]:
+          - /url: https://www.instagram.com/deleted_formatt/?text=hi%20DELETEDROOT!%20i%20want%20to%20order%3A%20MP3%20license
+      - generic [ref=f4e230]:
+        - generic [ref=f4e231]: RECOMMENDED
+        - generic [ref=f4e232]:
+          - generic [ref=f4e233]: LIC/WAV
+          - generic [ref=f4e234]: 2/3
+        - heading "WAV" [level=3] [ref=f4e235]
+        - generic [ref=f4e236]: $30
+        - paragraph [ref=f4e237]: Untagged WAV. Release-ready mix quality.
+        - link "ORDER VIA DM →" [ref=f4e238] [cursor=pointer]:
+          - /url: https://www.instagram.com/deleted_formatt/?text=hi%20DELETEDROOT!%20i%20want%20to%20order%3A%20WAV%20license
+      - generic [ref=f4e239]:
+        - generic [ref=f4e240]:
+          - generic [ref=f4e241]: LIC/EXCL
+          - generic [ref=f4e242]: 3/3
+        - heading "EXCLUSIVE" [level=3] [ref=f4e243]
+        - generic [ref=f4e244]: $100
+        - paragraph [ref=f4e245]: Beat removed from store. Full rights transferred. Yours alone.
+        - link "ORDER VIA DM →" [ref=f4e246] [cursor=pointer]:
+          - /url: https://www.instagram.com/deleted_formatt/?text=hi%20DELETEDROOT!%20i%20want%20to%20order%3A%20EXCLUSIVE%20license
+    - paragraph [ref=f4e247]:
+      - text: purchased via direct message — discord / instagram —
+      - link "discord" [ref=f4e248] [cursor=pointer]:
+        - /url: https://discord.com/users/824121463971905557
+      - text: /
+      - link "instagram" [ref=f4e249] [cursor=pointer]:
+        - /url: https://www.instagram.com/deleted_formatt/
+  - generic [ref=f4e250]:
+    - heading "ABOUT_0x ABOUT_0x ABOUT_0x" [level=2] [ref=f4e251]
+    - generic [ref=f4e252]:
+      - generic [ref=f4e253]:
+        - paragraph [ref=f4e254]: DELETEDROOT — producer from KAZAKHSTAN crafting pinknoise, ambient and hyperpop transmissions.
+        - paragraph [ref=f4e255]: Broken signals, glass textures, melodies that feel like a memory you never had.
+        - paragraph [ref=f4e256]: 「名前を消しても、音は残る。」
+      - generic [ref=f4e257]:
+        - generic [ref=f4e258]:
+          - generic [ref=f4e259]: BASE
+          - generic [ref=f4e260]: KAZAKHSTAN
+        - generic [ref=f4e261]:
+          - generic [ref=f4e262]: GENRES
+          - generic [ref=f4e263]: PINKNOISE / AMBIENT / HYPERPOP
+        - generic [ref=f4e264]:
+          - generic [ref=f4e265]: STATUS
+          - generic [ref=f4e266]: ONLINE — TAKING ORDERS
+        - generic [ref=f4e267]:
+          - generic [ref=f4e268]: SIGNAL
+          - generic [ref=f4e269]: LIVE
+  - generic [ref=f4e271]:
+    - heading "CONTACT_CHANNELS" [level=2] [ref=f4e272]
+    - generic [ref=f4e273]:
+      - link "01 DISCORD ↗" [ref=f4e274] [cursor=pointer]:
+        - /url: https://discord.com/users/824121463971905557
+        - generic [ref=f4e275]:
+          - generic [ref=f4e276]: "01"
+          - generic [ref=f4e277]: DISCORD
+        - generic [ref=f4e278]: ↗
+      - link "02 INSTAGRAM ↗" [ref=f4e279] [cursor=pointer]:
+        - /url: https://www.instagram.com/deleted_formatt/
+        - generic [ref=f4e280]:
+          - generic [ref=f4e281]: "02"
+          - generic [ref=f4e282]: INSTAGRAM
+        - generic [ref=f4e283]: ↗
+      - link "03 SOUNDCLOUD ↗" [ref=f4e284] [cursor=pointer]:
+        - /url: https://soundcloud.com/deleted-947955106
+        - generic [ref=f4e285]:
+          - generic [ref=f4e286]: "03"
+          - generic [ref=f4e287]: SOUNDCLOUD
+        - generic [ref=f4e288]: ↗
+      - link "04 UNTITLED ↗" [ref=f4e289] [cursor=pointer]:
+        - /url: https://untitled.stream/library/project/sTAvnLT4cGPGWBUaLImPw
+        - generic [ref=f4e290]:
+          - generic [ref=f4e291]: "04"
+          - generic [ref=f4e292]: UNTITLED
+        - generic [ref=f4e293]: ↗
+      - link "05 EMAIL ↗" [ref=f4e294] [cursor=pointer]:
+        - /url: mailto:deletedroot@gmail.com
+        - generic [ref=f4e295]:
+          - generic [ref=f4e296]: "05"
+          - generic [ref=f4e297]: EMAIL
+        - generic [ref=f4e298]: ↗
+    - link "deletedroot@gmail.com" [ref=f4e299] [cursor=pointer]:
+      - /url: mailto:deletedroot@gmail.com
+    - generic [ref=f4e300]:
+      - generic [ref=f4e301]: © DELETEDROOT — all signals reserved
+      - generic [ref=f4e302]: KAZAKHSTAN // 51°10'N 71°26'E
+      - generic [ref=f4e303]: transmission ends here ▓

@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ice: #bfe9f2;
+  --holo: #7fd8e8;
+  --ink: #0a0a0b;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper, #f4f7f8);
+  color: var(--ink);
+  font-family: "JetBrains Mono", monospace;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+@media (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
+}
+
+::selection {
+  background: #0aa8c4;
+  color: #fff;
+}
+
+/* ---- scrollbar ---- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #e9f2f4;
+}
+::-webkit-scrollbar-thumb {
+  background: #0a0a0b;
+  border: 2px solid #e9f2f4;
+}
+
+/* ---- film grain + scanlines overlay ---- */
+.noise-overlay {
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 90;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 0.6s steps(4) infinite;
+}
+
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2%, 3%); }
+  50% { transform: translate(3%, -2%); }
+  75% { transform: translate(-1%, -3%); }
+  100% { transform: translate(2%, 2%); }
+}
+
+/* ---- marquee ---- */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-speed, 30s) linear infinite;
+}
+.marquee-track.reverse {
+  animation-direction: reverse;
+}
+
+/* ---- glitch heading ---- */
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.glitch::before {
+  color: #0aa8c4;
+  z-index: -1;
+  animation: glitch-a 3.2s infinite linear alternate;
+}
+.glitch::after {
+  color: #ff2e4d;
+  z-index: -2;
+  animation: glitch-b 2.7s infinite linear alternate;
+}
+@keyframes glitch-a {
+  0%, 86% { clip-path: inset(0 0 100% 0); transform: translate(0); }
+  88% { clip-path: inset(12% 0 58% 0); transform: translate(-6px, 2px); }
+  90% { clip-path: inset(60% 0 8% 0); transform: translate(5px, -1px); }
+  92%, 100% { clip-path: inset(0 0 100% 0); transform: translate(0); }
+}
+@keyframes glitch-b {
+  0%, 90% { clip-path: inset(0 0 100% 0); transform: translate(0); }
+  92% { clip-path: inset(40% 0 30% 0); transform: translate(7px, 1px); }
+  94% { clip-path: inset(10% 0 75% 0); transform: translate(-5px, -2px); }
+  96%, 100% { clip-path: inset(0 0 100% 0); transform: translate(0); }
+}
+
+/* ---- strikethrough draw ---- */
+.strike {
+  position: relative;
+}
+.strike::after {
+  content: "";
+  position: absolute;
+  left: -2%;
+  top: 54%;
+  width: 104%;
+  height: 0.09em;
+  background: currentColor;
+  transform: rotate(-2deg) scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.6s cubic-bezier(0.7, 0, 0.2, 1);
+}
+.strike.on::after {
+  transform: rotate(-2deg) scaleX(1);
+}
+
+/* ---- link hover underline hack ---- */
+.link-line {
+  position: relative;
+}
+.link-line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s cubic-bezier(0.7, 0, 0.2, 1);
+}
+.link-line:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ---- holo sheen on cover ---- */
+.holo-sheen {
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(127, 216, 232, 0.35) 45%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(200, 255, 46, 0.18) 55%,
+    transparent 70%
+  );
+  background-size: 250% 250%;
+  animation: sheen 5s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+@keyframes sheen {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ---- outline text ---- */
+.text-outline {
+  -webkit-text-stroke: 1.5px var(--ink);
+  color: transparent;
+}
+.text-outline-ice {
+  -webkit-text-stroke: 1.5px #0aa8c4;
+  color: transparent;
+}
+
+/* ---- blink cursor block ---- */
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.blink {
+  animation: blink 1s steps(1) infinite;
+}
