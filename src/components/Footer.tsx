@@ -1,8 +1,17 @@
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { useLang } from "../i18n";
 import { LINKS } from "../data";
 
 export default function Footer() {
   const { t } = useLang();
+  const [now, setNow] = useState(new Date());
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  const clock = now.toLocaleTimeString("en-GB");
+
   const links = [
     ["DISCORD", LINKS.discord],
     ["INSTAGRAM", LINKS.instagram],
@@ -13,9 +22,17 @@ export default function Footer() {
 
   return (
     <footer id="contact" className="relative mt-10 bg-ink px-5 py-16 text-white md:px-10">
-      <h2 className="font-display text-[12vw] font-black uppercase leading-none md:text-[7vw]">
-        {t.footer.title}
-      </h2>
+      <div className="overflow-hidden">
+        <motion.h2
+          initial={{ y: "110%" }}
+          whileInView={{ y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
+          className="font-display text-[12vw] font-black uppercase leading-none md:text-[7vw]"
+        >
+          {t.footer.title}
+        </motion.h2>
+      </div>
 
       <div className="mt-10 grid gap-3">
         {links.map(([label, href], i) => (
@@ -48,7 +65,10 @@ export default function Footer() {
 
       <div className="mt-16 flex flex-wrap items-center justify-between gap-4 font-mono text-[9px] uppercase tracking-[0.3em] opacity-40">
         <span>{t.footer.rights}</span>
-        <span>KAZAKHSTAN // 51°10'N 71°26'E</span>
+        <span>
+          KAZAKHSTAN // 51°10'N 71°26'E —{" "}
+          <span className="text-holo">{clock}</span>
+        </span>
         <span>{t.footer.made} ▓</span>
       </div>
     </footer>

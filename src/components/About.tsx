@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useLang } from "../i18n";
+import SectionHeading from "./SectionHeading";
 
 export default function About() {
   const { t } = useLang();
@@ -11,12 +12,7 @@ export default function About() {
 
   return (
     <section id="about" className="relative px-5 py-24 md:px-10">
-      <h2
-        className="glitch mb-12 font-display text-[13vw] font-black uppercase leading-none md:text-[8vw]"
-        data-text={t.about.title}
-      >
-        {t.about.title}
-      </h2>
+      <SectionHeading title={t.about.title} />
 
       <div className="grid gap-10 md:grid-cols-2">
         <motion.div

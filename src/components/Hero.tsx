@@ -1,6 +1,14 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useState } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValue,
+  useSpring,
+} from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import type { ReactNode } from "react";
 import { useLang } from "../i18n";
+import { asset } from "../data";
 
 function useClock() {
   const [now, setNow] = useState(new Date());
@@ -9,6 +17,55 @@ function useClock() {
     return () => clearInterval(id);
   }, []);
   return now.toLocaleTimeString("en-GB");
+}
+
+/** Subtle magnetic pull towards the cursor for hero CTAs. */
+function Magnetic({ children }: { children: ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const sx = useSpring(x, { stiffness: 180, damping: 14 });
+  const sy = useSpring(y, { stiffness: 180, damping: 14 });
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{ x: sx, y: sy }}
+      onMouseMove={(e) => {
+        const r = ref.current!.getBoundingClientRect();
+        x.set((e.clientX - r.left - r.width / 2) * 0.35);
+        y.set((e.clientY - r.top - r.height / 2) * 0.35);
+      }}
+      onMouseLeave={() => {
+        x.set(0);
+        y.set(0);
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/** Rotating circular text badge. */
+function OrbitBadge() {
+  return (
+    <div className="pointer-events-none absolute bottom-[20%] left-[4%] z-10 hidden h-32 w-32 lg:block">
+      <svg viewBox="0 0 100 100" className="spin-slow h-full w-full">
+        <defs>
+          <path
+            id="orbit-circle"
+            d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"
+          />
+        </defs>
+        <text className="fill-ink font-mono text-[8.2px] uppercase tracking-[0.22em]">
+          <textPath href="#orbit-circle">
+            deletedroot • pinknoise • ambient • hyperpop •
+          </textPath>
+        </text>
+      </svg>
+      <div className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-cyan2" />
+    </div>
+  );
 }
 
 export default function Hero() {
@@ -46,7 +103,7 @@ export default function Hero() {
         transition={{ duration: 1.2, ease: [0.2, 0.8, 0.2, 1], delay: 0.3 }}
       >
         <div className="relative overflow-hidden shadow-[0_30px_80px_-20px_rgba(10,100,140,0.45)]">
-          <img src="/img/cover.png" alt="DELETEDROOT cover" className="block w-full" />
+          <img src={asset("img/cover.png")} alt="DELETEDROOT cover" className="block w-full" />
           <div className="holo-sheen absolute inset-0" />
           <div className="absolute bottom-0 left-0 right-0 flex justify-between bg-ink/85 px-3 py-2 font-mono text-[9px] uppercase tracking-widest text-ice">
             <span>CD-R / LOST MEDIA</span>
@@ -105,18 +162,21 @@ export default function Hero() {
         </p>
       </motion.div>
 
+      <OrbitBadge />
+
       {/* bottom row */}
       <div className="z-10 mt-10 flex items-end justify-between font-mono text-[10px] uppercase tracking-[0.25em]">
         <span className="opacity-60 max-w-[220px]">{t.hero.mic1}</span>
-        <motion.a
-          href="#beats"
-          className="flex items-center gap-2 border border-ink bg-ink px-4 py-2 text-white"
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.97 }}
-        >
-          {t.hero.listen}
-          <span className="blink">▸</span>
-        </motion.a>
+        <Magnetic>
+          <motion.a
+            href="#beats"
+            className="group flex items-center gap-2 border border-ink bg-ink px-4 py-2 text-white transition-colors hover:bg-cyan2 hover:border-cyan2"
+            whileTap={{ scale: 0.97 }}
+          >
+            {t.hero.listen}
+            <span className="blink">▸</span>
+          </motion.a>
+        </Magnetic>
       </div>
 
       <div className="absolute bottom-2 left-1/2 -translate-x-1/2 font-mono text-[9px] uppercase tracking-[0.4em] opacity-40">

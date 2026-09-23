@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 export default function Marquee({
   items,
   reverse,
@@ -14,7 +16,7 @@ export default function Marquee({
     <div className={`relative overflow-hidden whitespace-nowrap ${className}`}>
       <div
         className={`marquee-track ${reverse ? "reverse" : ""}`}
-        style={{ "--marquee-speed": `${speed}s` } as React.CSSProperties}
+        style={{ "--marquee-speed": `${speed}s` } as CSSProperties}
       >
         {row.map((it, i) => (
           <span key={i} className="mx-3 inline-flex items-center gap-3">

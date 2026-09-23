@@ -3,5 +3,6 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "./",
+  // GitHub Pages serves the site from https://h1chan.github.io/Deleted-Rush/
+  base: "/Deleted-Rush/",
 });

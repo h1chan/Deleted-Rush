@@ -1,5 +1,6 @@
 import MarbleBackground from "./components/MarbleBackground";
 import Cursor from "./components/Cursor";
+import Preloader from "./components/Preloader";
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import Beats from "./components/Beats";
@@ -11,6 +12,7 @@ import Marquee from "./components/Marquee";
 export default function App() {
   return (
     <main className="relative">
+      <Preloader />
       <MarbleBackground />
       <div className="noise-overlay" />
       <Cursor />

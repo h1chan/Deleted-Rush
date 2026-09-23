@@ -17,12 +17,17 @@ body {
   color: var(--ink);
   font-family: "JetBrains Mono", monospace;
   overflow-x: hidden;
-  cursor: none;
 }
 
-@media (pointer: coarse) {
-  body {
-    cursor: auto;
+/* custom cursor: hide the native one everywhere (incl. links/buttons,
+   which override `cursor` in the UA stylesheet) — but only on precise pointers */
+@media (pointer: fine) {
+  body,
+  a,
+  button,
+  [role="button"],
+  [data-cursor] {
+    cursor: none;
   }
 }
 
@@ -76,6 +81,9 @@ body {
 }
 .marquee-track.reverse {
   animation-direction: reverse;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
 }
 
 /* ---- glitch heading ---- */
@@ -191,4 +199,65 @@ body {
 }
 .blink {
   animation: blink 1s steps(1) infinite;
+}
+
+/* ---- slow rotation (circular badge) ---- */
+@keyframes rot {
+  to { transform: rotate(360deg); }
+}
+.spin-slow {
+  animation: rot 18s linear infinite;
+}
+
+/* ---- equalizer bars (active track row) ---- */
+@keyframes eq {
+  0%, 100% { transform: scaleY(0.25); }
+  50% { transform: scaleY(1); }
+}
+.eq-bar {
+  transform-origin: bottom;
+  animation: eq 0.9s ease-in-out infinite;
+}
+
+/* ---- track row hover sweep ---- */
+.row-sweep {
+  position: relative;
+  isolation: isolate;
+}
+.row-sweep::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--ink);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s cubic-bezier(0.7, 0, 0.2, 1);
+}
+.row-sweep:hover::before {
+  transform: scaleY(1);
+}
+
+/* ---- accessible focus ---- */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #0aa8c4;
+  outline-offset: 2px;
+}
+
+/* ---- reduced motion: kill all decorative animation ---- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .noise-overlay,
+  .marquee-track,
+  .glitch::before,
+  .glitch::after,
+  .holo-sheen,
+  .blink,
+  .spin-slow,
+  .eq-bar {
+    animation: none !important;
+  }
 }

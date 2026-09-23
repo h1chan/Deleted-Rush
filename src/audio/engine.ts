@@ -53,9 +53,18 @@ audio.addEventListener("loadedmetadata", () => {
   state.duration = audio.duration;
   emit();
 });
+let endedHandler: (() => void) | null = null;
+
+/** Register a callback fired when the current track finishes (auto-advance). */
+export function setOnEnded(fn: (() => void) | null) {
+  endedHandler = fn;
+}
+
 audio.addEventListener("ended", () => {
   state.playing = false;
+  state.time = 0;
   emit();
+  endedHandler?.();
 });
 
 export function subscribe(l: Listener) {
@@ -77,17 +86,26 @@ export function playTrack(src: string) {
   if (state.currentSrc !== src) {
     audio.src = src;
     state.currentSrc = src;
+    state.time = 0;
+    state.duration = 0;
   }
   ctx!.resume();
-  audio.play();
+  // play() rejects on autoplay-policy errors or when interrupted by a
+  // quick track switch ("The play() request was interrupted") — swallow
+  // it and roll the state back instead of an unhandled rejection.
+  audio.play().catch(() => {
+    state.playing = false;
+    emit();
+  });
   state.playing = true;
   emit();
 }
 
 export function seek(t: number) {
-  if (!state.currentSrc) return;
-  audio.currentTime = t;
-  state.time = t;
+  if (!state.currentSrc || !isFinite(t)) return;
+  const clamped = Math.max(0, Math.min(t, state.duration || 0));
+  audio.currentTime = clamped;
+  state.time = clamped;
   emit();
 }
 

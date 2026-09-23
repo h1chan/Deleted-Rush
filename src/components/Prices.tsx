@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useLang } from "../i18n";
 import { LINKS, orderDm } from "../data";
+import SectionHeading from "./SectionHeading";
 
 export default function Prices() {
   const { t } = useLang();
@@ -11,6 +12,7 @@ export default function Prices() {
       name: t.prices.mp3,
       price: "$10",
       desc: t.prices.mp3d,
+      features: t.prices.mp3f,
       code: "LIC/MP3",
     },
     {
@@ -18,6 +20,7 @@ export default function Prices() {
       name: t.prices.wav,
       price: "$30",
       desc: t.prices.wavd,
+      features: t.prices.wavf,
       code: "LIC/WAV",
       best: true,
     },
@@ -26,21 +29,14 @@ export default function Prices() {
       name: t.prices.ex,
       price: "$100",
       desc: t.prices.exd,
+      features: t.prices.exf,
       code: "LIC/EXCL",
     },
   ];
 
   return (
     <section id="prices" className="relative px-5 py-24 md:px-10">
-      <div className="mb-2 font-mono text-[10px] uppercase tracking-[0.35em] opacity-50">
-        {t.prices.sub}
-      </div>
-      <h2
-        className="glitch mb-12 font-display text-[13vw] font-black uppercase leading-none md:text-[8vw]"
-        data-text={t.prices.title}
-      >
-        {t.prices.title}
-      </h2>
+      <SectionHeading title={t.prices.title} sub={t.prices.sub} />
 
       <div className="grid gap-6 md:grid-cols-3">
         {tiers.map((tier, i) => (
@@ -58,7 +54,7 @@ export default function Prices() {
             }`}
           >
             {tier.best && (
-              <span className="absolute -top-3 left-4 bg-cyan2 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-white">
+              <span className="absolute -top-3 left-4 bg-acid px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-widest text-ink">
                 RECOMMENDED
               </span>
             )}
@@ -76,9 +72,20 @@ export default function Prices() {
             >
               {tier.price}
             </div>
-            <p className="mt-4 min-h-[60px] font-mono text-xs leading-relaxed opacity-80">
+            <p className="mt-4 font-mono text-xs leading-relaxed opacity-80">
               {tier.desc}
             </p>
+            <ul className="mt-4 min-h-[72px] space-y-1.5">
+              {tier.features.map((f) => (
+                <li
+                  key={f}
+                  className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider opacity-80"
+                >
+                  <span className={tier.best ? "text-holo" : "text-cyan2"}>▸</span>
+                  {f}
+                </li>
+              ))}
+            </ul>
             <a
               href={orderDm(`${tier.name} license`)}
               target="_blank"
