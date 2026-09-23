@@ -69,6 +69,14 @@ body {
   100% { transform: translate(2%, 2%); }
 }
 
+/* touch devices: keep the grain texture but don't animate it —
+   animating a 200%-sized fixed layer forces constant full-screen repaints */
+@media (pointer: coarse) {
+  .noise-overlay {
+    animation: none;
+  }
+}
+
 /* ---- marquee ---- */
 @keyframes marquee {
   from { transform: translateX(0); }

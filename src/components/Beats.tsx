@@ -19,7 +19,11 @@ function Spectrum() {
     const c = ref.current!;
     const g = c.getContext("2d")!;
     let raf = 0;
-    const draw = () => {
+    let last = 0;
+    const draw = (now: number) => {
+      raf = requestAnimationFrame(draw);
+      if (now - last < 33) return; // 30fps is plenty for a level meter
+      last = now;
       // only reallocate the backing store when the size actually changed —
       // assigning canvas.width every frame forces a full realloc + state reset
       const w = c.offsetWidth * 2;
@@ -37,9 +41,8 @@ function Spectrum() {
         g.fillStyle = i % 7 === 0 ? "#ff2e4d" : "#0aa8c4";
         g.fillRect((i * w) / bars, h - bh, w / bars - 3, bh);
       }
-      raf = requestAnimationFrame(draw);
     };
-    draw();
+    raf = requestAnimationFrame(draw);
     return () => cancelAnimationFrame(raf);
   }, []);
   return <canvas ref={ref} className="h-10 w-full" />;
@@ -102,7 +105,7 @@ export default function Beats() {
             <motion.button
               key={tr.id}
               onClick={() => playTrack(tr.file)}
-              className={`group grid grid-cols-[auto_1fr_auto] items-center gap-4 border-b border-ink/20 px-2 py-5 text-left transition-colors md:grid-cols-[60px_auto_1fr_auto_auto] md:px-4 ${
+              className={`group grid grid-cols-[auto_auto_1fr] items-center gap-3 border-b border-ink/20 px-2 py-5 text-left transition-colors min-[420px]:gap-4 md:grid-cols-[60px_auto_1fr_auto_auto] md:px-4 ${
                 active ? "bg-ink text-white" : "row-sweep hover:text-white"
               }`}
               whileTap={{ scale: 0.99 }}
@@ -117,7 +120,7 @@ export default function Beats() {
                 {active && st.playing ? "❚❚" : "▸"}
               </span>
               <span className="flex flex-col">
-                <span className="flex items-center font-display text-2xl font-black uppercase tracking-tight md:text-4xl">
+                <span className="flex flex-wrap items-center font-display text-xl font-black uppercase tracking-tight min-[420px]:text-2xl md:text-4xl">
                   {tr.title}
                   {tr.collab && (
                     <span
@@ -162,13 +165,13 @@ export default function Beats() {
             transition={{ type: "spring", stiffness: 260, damping: 28 }}
             className="sticky bottom-4 z-40 mt-8 border border-ink bg-white/85 shadow-[8px_8px_0_#0a0a0b] backdrop-blur"
           >
-            <div className="flex items-center gap-3 px-3 py-2 md:gap-6 md:px-5">
+            <div className="flex items-center gap-2 px-2 py-2 md:gap-6 md:px-5">
               <img
                 src={asset("img/cover.webp")}
                 alt=""
                 loading="lazy"
                 decoding="async"
-                className={`h-10 w-10 object-cover ${st.playing ? "animate-[spin_6s_linear_infinite]" : ""}`}
+                className={`h-9 w-9 object-cover md:h-10 md:w-10 ${st.playing ? "animate-[spin_6s_linear_infinite]" : ""}`}
               />
               <div className="min-w-0 flex-1">
                 <div className="truncate font-display text-sm font-black uppercase">
@@ -196,7 +199,7 @@ export default function Beats() {
               <div className="hidden w-40 md:block">
                 <Spectrum />
               </div>
-              <span className="font-mono text-[10px] opacity-60">
+              <span className="hidden font-mono text-[10px] opacity-60 min-[420px]:block">
                 {fmt(st.time)} / {fmt(st.duration)}
               </span>
               <button

@@ -1,3 +1,5 @@
+import { displayFit } from "../fit";
+
 /** Shared section heading: mono sub-label + glitch title.
  *  Rendered statically visible — no scroll-triggered reveal, so the
  *  heading can never get stuck hidden. */
@@ -18,9 +20,9 @@ export default function SectionHeading({
         </div>
       )}
       <h2
-        className={`glitch font-display text-[13vw] font-black uppercase leading-none md:text-[8vw] ${
-          light ? "text-white" : ""
-        }`}
+        className={`glitch font-display ${displayFit(
+          title
+        )} font-black uppercase leading-none ${light ? "text-white" : ""}`}
         data-text={title}
       >
         {title}

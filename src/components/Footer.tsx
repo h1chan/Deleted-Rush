@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useLang } from "../i18n";
 import { LINKS } from "../data";
+import { displayFit } from "../fit";
 
 export default function Footer() {
   const { t } = useLang();
@@ -28,7 +29,9 @@ export default function Footer() {
           whileInView={{ y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
-          className="font-display text-[12vw] font-black uppercase leading-none md:text-[7vw]"
+          className={`font-display ${displayFit(
+            t.footer.title
+          )} font-black uppercase leading-none`}
         >
           {t.footer.title}
         </motion.h2>

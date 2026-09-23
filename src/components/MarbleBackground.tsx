@@ -6,8 +6,10 @@ attribute vec2 p;
 void main(){ gl_Position = vec4(p, 0., 1.); }
 `;
 
-// Liquid marble — blue/chrome ink swirls on paper-white, flowing ribbons
-const FRAG = `
+// Liquid marble — blue/chrome ink swirls on paper-white, flowing ribbons.
+// The fbm octave count is injected at compile time: weak GPUs get fewer
+// octaves (the top octaves contribute <2% amplitude — visually identical).
+const FRAG = (oct: number) => `
 precision highp float;
 uniform vec2 u_res;
 uniform float u_time;
@@ -24,7 +26,7 @@ float noise(vec2 p){
 float fbm(vec2 p){
   float v = 0., a = .5;
   mat2 r = mat2(1.6, 1.2, -1.2, 1.6);
-  for(int i=0;i<6;i++){ v += a*noise(p); p = r*p; a *= .5; }
+  for(int i=0;i<${oct};i++){ v += a*noise(p); p = r*p; a *= .5; }
   return v;
 }
 
@@ -82,8 +84,21 @@ export default function MarbleBackground() {
 
   useEffect(() => {
     const canvas = ref.current!;
-    const gl = canvas.getContext("webgl", { antialias: false });
+    const gl = canvas.getContext("webgl", {
+      antialias: false,
+      depth: false,
+      stencil: false,
+      powerPreference: "low-power",
+    });
     if (!gl) return;
+
+    // coarse pointers / small screens get the cheap path
+    const weak =
+      window.matchMedia("(pointer: coarse)").matches ||
+      Math.min(window.innerWidth, window.innerHeight) < 768;
+    const reduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
     const compile = (type: number, src: string) => {
       const s = gl.createShader(type)!;
@@ -97,7 +112,7 @@ export default function MarbleBackground() {
       return s;
     };
     const vs = compile(gl.VERTEX_SHADER, VERT);
-    const fs = compile(gl.FRAGMENT_SHADER, FRAG);
+    const fs = compile(gl.FRAGMENT_SHADER, FRAG(weak ? 4 : 6));
     if (!vs || !fs) return;
     const prog = gl.createProgram()!;
     gl.attachShader(prog, vs);
@@ -125,35 +140,86 @@ export default function MarbleBackground() {
     const uMouse = gl.getUniformLocation(prog, "u_mouse");
     const uLevel = gl.getUniformLocation(prog, "u_level");
 
+    // Quality tiers. The marble is soft, so rendering into a smaller
+    // backing store and letting CSS upscale it looks identical while
+    // costing a fraction of the fill-rate. If frames keep arriving late
+    // we step down a tier — never back up, to avoid oscillation.
+    const TIERS = weak
+      ? [
+          { scale: 0.5, fps: 30 },
+          { scale: 0.4, fps: 24 },
+          { scale: 0.33, fps: 20 },
+        ]
+      : [
+          { scale: 0.75, fps: 60 },
+          { scale: 0.6, fps: 30 },
+          { scale: 0.45, fps: 24 },
+        ];
+    let tier = 0;
+
     let mx = 0.5, my = 0.5, smx = 0.5, smy = 0.5;
     const onMove = (e: PointerEvent) => {
       mx = e.clientX / window.innerWidth;
       my = 1 - e.clientY / window.innerHeight;
     };
-    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointermove", onMove, { passive: true });
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio, 1.5);
-      canvas.width = window.innerWidth * dpr;
-      canvas.height = window.innerHeight * dpr;
+      const s = TIERS[tier].scale;
+      canvas.width = Math.max(1, Math.round(window.innerWidth * s));
+      canvas.height = Math.max(1, Math.round(window.innerHeight * s));
       gl.viewport(0, 0, canvas.width, canvas.height);
     };
     resize();
     window.addEventListener("resize", resize);
 
-    let raf = 0;
     const t0 = performance.now();
-    const loop = () => {
+    const draw = (now: number) => {
       smx += (mx - smx) * 0.05;
       smy += (my - smy) * 0.05;
       gl.uniform2f(uRes, canvas.width, canvas.height);
-      gl.uniform1f(uTime, (performance.now() - t0) / 1000);
+      gl.uniform1f(uTime, (now - t0) / 1000);
       gl.uniform2f(uMouse, smx, smy);
       gl.uniform1f(uLevel, getLevel());
       gl.drawArrays(gl.TRIANGLES, 0, 3);
-      raf = requestAnimationFrame(loop);
     };
-    loop();
+
+    if (reduced) {
+      // reduced motion: paint one static marble frame, no loop at all
+      const still = () => draw(t0 + 8000);
+      still();
+      window.addEventListener("resize", still);
+      return () => {
+        window.removeEventListener("pointermove", onMove);
+        window.removeEventListener("resize", resize);
+        window.removeEventListener("resize", still);
+      };
+    }
+
+    let raf = 0;
+    let last = 0;
+    let slow = 0;
+    const loop = (now: number) => {
+      raf = requestAnimationFrame(loop);
+      const interval = 1000 / TIERS[tier].fps;
+      if (now - last < interval - 1) return; // fps cap
+      const dt = now - last;
+      last = now;
+      // sustained late frames → drop a quality tier
+      if (tier < TIERS.length - 1) {
+        if (dt > interval * 1.4) {
+          if (++slow > 45) {
+            tier++;
+            slow = 0;
+            resize();
+          }
+        } else {
+          slow = Math.max(0, slow - 2);
+        }
+      }
+      draw(now);
+    };
+    raf = requestAnimationFrame(loop);
 
     return () => {
       cancelAnimationFrame(raf);

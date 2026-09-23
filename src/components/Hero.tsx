@@ -125,7 +125,7 @@ export default function Hero() {
       {/* main title */}
       <motion.div style={{ y: yTitle }} className="relative z-10">
         <motion.h1
-          className="glitch whitespace-nowrap font-display text-[13vw] font-black uppercase leading-[0.82] tracking-tight md:text-[10.5vw]"
+          className="glitch whitespace-nowrap font-display text-[11vw] font-black uppercase leading-[0.82] tracking-tight md:text-[10.5vw]"
           data-text={"DELETEDROOT,"}
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
@@ -147,7 +147,7 @@ export default function Hero() {
       </motion.div>
 
       {/* bottom row */}
-      <div className="z-10 mt-10 flex items-end justify-between font-mono text-[10px] uppercase tracking-[0.25em]">
+      <div className="z-10 mt-10 flex flex-wrap items-end justify-between gap-4 font-mono text-[10px] uppercase tracking-[0.25em]">
         <span className="opacity-60 max-w-[220px]">{t.hero.mic1}</span>
         <Magnetic>
           <motion.a
