@@ -46,28 +46,6 @@ function Magnetic({ children }: { children: ReactNode }) {
   );
 }
 
-/** Rotating circular text badge. */
-function OrbitBadge() {
-  return (
-    <div className="pointer-events-none absolute bottom-[20%] left-[4%] z-10 hidden h-32 w-32 lg:block">
-      <svg viewBox="0 0 100 100" className="spin-slow h-full w-full">
-        <defs>
-          <path
-            id="orbit-circle"
-            d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"
-          />
-        </defs>
-        <text className="fill-ink font-mono text-[8.2px] uppercase tracking-[0.22em]">
-          <textPath href="#orbit-circle">
-            deletedroot • pinknoise • ambient • hyperpop •
-          </textPath>
-        </text>
-      </svg>
-      <div className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-cyan2" />
-    </div>
-  );
-}
-
 export default function Hero() {
   const { t } = useLang();
   const clock = useClock();
@@ -103,7 +81,13 @@ export default function Hero() {
         transition={{ duration: 1.2, ease: [0.2, 0.8, 0.2, 1], delay: 0.3 }}
       >
         <div className="relative overflow-hidden shadow-[0_30px_80px_-20px_rgba(10,100,140,0.45)]">
-          <img src={asset("img/cover.png")} alt="DELETEDROOT cover" className="block w-full" />
+          <img
+            src={asset("img/cover.webp")}
+            alt="DELETEDROOT cover"
+            className="block w-full"
+            decoding="async"
+            fetchPriority="high"
+          />
           <div className="holo-sheen absolute inset-0" />
           <div className="absolute bottom-0 left-0 right-0 flex justify-between bg-ink/85 px-3 py-2 font-mono text-[9px] uppercase tracking-widest text-ice">
             <span>CD-R / LOST MEDIA</span>
@@ -161,8 +145,6 @@ export default function Hero() {
           {t.hero.jp1}
         </p>
       </motion.div>
-
-      <OrbitBadge />
 
       {/* bottom row */}
       <div className="z-10 mt-10 flex items-end justify-between font-mono text-[10px] uppercase tracking-[0.25em]">

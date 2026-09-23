@@ -164,8 +164,10 @@ export default function Beats() {
           >
             <div className="flex items-center gap-3 px-3 py-2 md:gap-6 md:px-5">
               <img
-                src={asset("img/cover.png")}
+                src={asset("img/cover.webp")}
                 alt=""
+                loading="lazy"
+                decoding="async"
                 className={`h-10 w-10 object-cover ${st.playing ? "animate-[spin_6s_linear_infinite]" : ""}`}
               />
               <div className="min-w-0 flex-1">

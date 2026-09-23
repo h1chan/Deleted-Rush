@@ -53,11 +53,6 @@ export default function Prices() {
                 : "border-ink bg-white/80 backdrop-blur"
             }`}
           >
-            {tier.best && (
-              <span className="absolute -top-3 left-4 bg-acid px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-widest text-ink">
-                RECOMMENDED
-              </span>
-            )}
             <div className="flex items-start justify-between font-mono text-[10px] uppercase tracking-widest opacity-60">
               <span>{tier.code}</span>
               <span>{i + 1}/3</span>
